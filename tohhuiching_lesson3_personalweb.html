@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hui - Graphic Designer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">
+    <a href="#home">
+      <img src="images/hui-logo-org.png" alt="Logo">
+    </a>
+  </div>
+
+  <div class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <ul>
+    <li><a href="#home" class="nav-link">Home</a></li>
+    <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+    <li><a href="#vlogs" class="nav-link">Vlogs</a></li>
+    <li><a href="#contact" class="nav-link">Contact</a></li>
+  </ul>
+</nav>
+
+  <!-- HOME -->
+  <section class="hero" id="home">
+
+    <div class="hero-left">
+      <h1>HUi</h1>
+      <h2>Graphic Designer</h2>
+      <p>
+        Based in Singapore, I specialize in Branding,
+        Packaging, Illustrations & Digital designs.
+      </p>
+
+      <div class="buttons">
+        <a href="#portfolio" class="btn-outline">Portfolio</a>
+        <a href="#contact" class="btn-filled">Contact Me</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <img src="images/profile.png" class="profile-img" alt="">
+      <img src="images/orange-splash.png" class="splash" alt="">
+    </div>
+
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="portfolio" id="portfolio">
+    <h1>Portfolio</h1>
+
+    <div class="portfolio-grid">
+
+      <div class="card">
+        <img src="images/branding.jpg">
+        <div class="overlay">BRANDING</div>
+      </div>
+
+      <div class="card">
+        <img src="images/packaging.jpg">
+        <div class="overlay">PACKAGING</div>
+      </div>
+
+      <div class="card">
+        <img src="images/digital.jpg">
+        <div class="overlay">DIGITAL PRINT</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- VLOGS -->
+<section class="vlogs" id="vlogs">
+  <h1>Behind the Brands</h1>
+  <p class="subtitle">Explore the stories, struggles, and growth behind each brand.</p>
+
+  <div class="vlog-wrapper">
+  <div class="vlog-cards" id="vlogContainer">
+      
+      <div class="vlog-card">
+        <h3>Nanyang Coffee</h3>
+        <p>"富二代" takes over a 30-year coffeeshop</p>
+        <img src="images/vlog1.jpg">
+      </div>
+      
+      <div class="vlog-card">
+        <h3>Tee Shop</h3>
+        <p>Inside the custom tee price war scene</p>
+        <img src="images/vlog2.jpg">
+      </div>
+      
+      <div class="vlog-card">
+        <h3>Beauty Bar</h3>
+        <p>Then vs now: Changing beauty industry</p>
+        <img src="images/vlog3.jpg">
+      </div>
+      
+      <div class="vlog-card">
+        <h3>Vainport</h3>
+        <p>The Essential Oil people love and hate</p>
+        <img src="images/essential-oil.jpg">
+      </div>
+      
+      <div class="vlog-card">
+        <h3>Famous Cookie</h3>
+        <p>A “must-try” spot everyone talks about</p>
+        <img src="images/cookie.jpg">
+      </div>
+    
+  </div>
+  </div>
+
+<div class="dots" id="dotContainer">
+  <span class="dot active" data-index="0"></span>
+  <span class="dot" data-index="1"></span>
+  <span class="dot" data-index="2"></span>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+
+  <!-- LEFT -->
+  <div class="contact-left">
+    <img src="images/hui-logo-wht.png" class="bg-logo" alt="">
+  </div>
+
+  <!-- RIGHT -->
+  <div class="contact-right">
+
+    <h1 class="title">LET’S WORK TOGETHER</h1>
+    <h2 class="subtitle">Turning ideas into reality</h2>
+
+    <div class="line"></div>
+
+    <h3>Get in Touch</h3>
+    <p class="desc">
+      Send us an email or chat with us on Telegram.
+    </p>
+
+    <div class="contact-info">
+
+      <!-- TELEGRAM -->
+      <p>
+        <svg class="icon" viewBox="0 0 24 24">
+          <path d="M9.04 15.47l-.39 5.44c.56 0 .8-.24 1.1-.52l2.64-2.52 5.47 4c1 .55 1.7.26 1.95-.92l3.53-16.56c.3-1.38-.5-1.92-1.47-1.56L1.64 9.5c-1.36.53-1.34 1.29-.23 1.64l5.44 1.7L19.5 5.4c.6-.4 1.15-.18.7.22"/>
+        </svg>
+        @hellohui
+      </p>
+
+      <!-- EMAIL -->
+      <p>
+        <svg class="icon" viewBox="0 0 24 24">
+          <rect x="3" y="5" width="18" height="14" rx="2"/>
+          <path d="M3 7l9 6 9-6"/>
+        </svg>
+        emailhuinow@gmail.com
+      </p>
+
+    </div>
+
+    <div class="line"></div>
+
+    <h4>Follow us on Social</h4>
+    <p class="social">TikTok · Instagram · YouTube</p>
+
+    <p class="copyright">© 2026 Hui. All rights reserved.</p>
+
+  </div>
+
+</section>
+
+<script>
+
+// ================= NAV ACTIVE SCROLL =================
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-link");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 120;
+    const sectionHeight = section.clientHeight;
+
+    if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === "#" + current) {
+      link.classList.add("active");
+    }
+  });
+});
+
+
+// ================= VLOG SLIDER =================
+const container = document.getElementById('vlogContainer');
+const dots = document.querySelectorAll('.dot');
+const cards = document.querySelectorAll('.vlog-card');
+
+dots.forEach((dot, index) => {
+  dot.addEventListener('click', () => {
+
+    const gap = parseInt(getComputedStyle(container).gap) || 30;
+
+    if (window.innerWidth > 768) {
+      const cardWidth = cards[0].getBoundingClientRect().width;
+      const scrollAmount = index * (cardWidth + gap);
+      container.style.transform = `translateX(-${scrollAmount}px)`;
+
+    } else {
+      const cardWidth = cards[0].offsetWidth;
+      container.scrollTo({
+        left: index * (cardWidth + gap),
+        behavior: 'smooth'
+      });
+    }
+
+    document.querySelector('.dot.active').classList.remove('active');
+    dot.classList.add('active');
+  });
+});
+
+
+// ================= HAMBURGER MENU =================
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".navbar ul");
+
+if (hamburger) {
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("show");
+  });
+
+  document.querySelectorAll(".nav-link").forEach(link => {
+    link.addEventListener("click", () => {
+      navMenu.classList.remove("show");
+      hamburger.classList.remove("active");
+    });
+  });
+}
+</script>
+
+</body>
+</html>
