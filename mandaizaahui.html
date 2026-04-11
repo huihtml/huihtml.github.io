@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Lost in the Wild | Mandai</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <a href="https://www.mandai.com/en.html">
+            <img src="images/web-header.png" alt="Mandai Wildlife Reserve Header">
+        </a>
+    </header>
+
+<main class="error-container">
+/* Scene 1*/
+    <div class="content-box" id="scene1">
+        <h4 class="title">Oops! You got lost in the wild</h4>
+        <p class="subtitle">This page doesn’t exist, but adventure does!</p>
+        
+        <div class="instruction-wrapper" onclick="startAdventure()">
+            <p class="instruction">Tap to begin your adventure</p>
+        </div>
+    </div>
+
+/* Scene 2 and Scene 3 */
+<div class="scene2-container" id="scene2">
+    <img src="images/img-jungle-mid-grass.png" class="layer mid-grass" alt="Mid Grass">
+    
+    <div class="animal-group sun-bear-group" onclick="showFact('sunbear')">
+        <img src="images/img-sun-bear.png" class="animal-sprite" alt="Sun Bear">
+    </div>
+
+    <div class="animal-group elephant-group" onclick="showFact('elephant')">
+        <img src="images/img-elephant.png" class="animal-sprite" alt="Elephant">
+    </div>
+
+<div class="russell-group" id="russellGroup" onclick="goHome()">
+        <img src="images/img-russell.png" class="russell-sprite" alt="Russell">
+        <img src="images/txt-not-alone.png" class="bubble b1" id="b1">
+        <img src="images/txt-im-russell.png" class="bubble b2" id="b2">
+        <img src="images/img-learn-something-new.png" class="bubble b3" id="b3">
+        <img src="images/img-discover-fact.png" class="bubble b4" id="b4">
+        <img src="images/txt-russell-go-home.png" class="bubble b5" id="b5">
+    </div>
+
+    <img src="images/img-jungle-front-grass.png" class="layer front-grass" alt="Front Grass">
+    <img src="images/img-jungle-foreground.png" class="layer foreground-scene3" id="fore3" alt="Jungle Foreground">
+
+    <img src="images/txt-im-sunbear.png" class="bubble animal-bubble" id="bubble-sunbear">
+    <div class="fact-box" id="fact-sunbear">I may be the smallest bear, but I have a super long tongue, up to 30cm!</div>
+
+    <img src="images/txt-im-ele.png" class="bubble animal-bubble" id="bubble-elephant">
+    <div class="fact-box" id="fact-elephant">I have one of the best memories in the animal kingdom!</div>
+
+    <div class="final-scene" id="finalScene">
+        <h1 class="final-title">Discover Mandai</h1>
+        <p class="final-body">Visit more attractions to enjoy up to 60% savings.</p>
+        <a href="https://www.mandai.com/en/tickets-and-passes.html">
+            <button class="final-btn">View Promotions</button>
+        </a>
+    </div>
+</div>
+
+<audio id="russellVoice" src="images/voice-russell-1.mp3"></audio>
+<audio id="russellVoice2" src="images/voice-russell-2.mp3"></audio>
+<audio id="audio-sunbear" src="images/voice-sunbear.mp3"></audio>
+<audio id="audio-elephant" src="images/voice-ele-1.mp3"></audio>
+
+</main>
+
+<script>
+    function startAdventure() {
+        // --- Scene 2 Logic ---
+        document.body.classList.add('transition-active');
+        
+        const audio1 = document.getElementById('russellVoice');
+        
+        setTimeout(() => {
+            if (audio1) {
+                audio1.play().catch(error => console.log("Audio 1 failed:", error));
+            }
+        }, 300);
+
+        // B1: Hey! You're not alone
+        setTimeout(() => {
+            const b1 = document.getElementById('b1');
+            if (b1) b1.classList.add('show');
+        }, 500); 
+
+        // B2: I'm Russell
+        setTimeout(() => {
+            const b2 = document.getElementById('b2');
+            if (b2) b2.classList.add('show');
+        }, 2000);
+
+        // B3: Let's play a game
+        setTimeout(() => {
+            const b3 = document.getElementById('b3');
+            if (b3) b3.classList.add('show');
+        }, 4000);
+
+        // --- Trigger Scene 3 Transition (Automated) ---
+        // We wait 6.5 seconds so the Scene 2 dialogue can finish first
+        setTimeout(triggerScene3, 6500); 
+    }
+
+function triggerScene3() {
+    // 1. Slide up Sun Bear, Elephant, and new Foreground
+    document.body.classList.add('scene3-active');
+    
+    // 2. Initial Scene 3 instruction (Bubble 4)
+    setTimeout(() => {
+        const audio2 = document.getElementById('russellVoice2');
+        if (audio2) {
+            audio2.play().catch(error => console.log("Audio 2 failed:", error));
+        }
+
+        const b4 = document.getElementById('b4');
+        if (b4) b4.classList.add('show');
+        
+    }, 1000); 
+}
+
+// --- Game: This function handles both Sun Bear and Elephant identically ---
+function showFact(animal) {
+    // 1. Instantly hide any current Russell bubbles (b4 or b5)
+    const b4 = document.getElementById('b4');
+    const b5 = document.getElementById('b5');
+    if (b4) b4.classList.remove('show');
+    if (b5) b5.classList.remove('show');
+
+    // 2. Identify animal elements
+    const bubble = document.getElementById(`bubble-${animal}`);
+    const fact = document.getElementById(`fact-${animal}`);
+    const audio = document.getElementById(`audio-${animal}`);
+
+    // 3. Show animal info and play audio
+    if (bubble) bubble.classList.add('show');
+    if (fact) fact.classList.add('show');
+    
+    if (audio) {
+        audio.currentTime = 0; 
+        audio.play().catch(error => console.log("Animal audio failed:", error));
+    }
+
+    // 4. Timing Logic: Match the duration to the audio length
+    // Increase Sun Bear's time so the bubble doesn't disappear too early
+    let displayDuration = 4000; // Default for Elephant
+    
+    if (animal === 'sunbear') {
+        // Change this to match the actual length of 'voice-sunbear.mp3'
+        // If the audio is 5 seconds, set this to 5000
+        displayDuration = 5500; 
+    }
+
+    // 5. Cleanup the animal fact and then show Bubble 5
+    setTimeout(() => {
+        if (bubble) bubble.classList.remove('show');
+        if (fact) fact.classList.remove('show');
+        
+        // Small delay (500ms) after the animal disappears before Russell speaks
+        setTimeout(() => {
+            if (b5 && document.body.classList.contains('scene3-active')) {
+                b5.classList.add('show');
+            }
+        }, 500);
+
+    }, displayDuration); 
+}
+
+// --- Final Sequence: Russell takes the user home ---
+function goHome() {
+    const b5 = document.getElementById('b5');
+    
+    if (b5 && b5.classList.contains('show')) {
+        b5.classList.remove('show');
+        document.getElementById('scene2').classList.add('characters-out');
+
+        setTimeout(() => {
+            // This triggers the CSS rule: .home-active .header { opacity: 1; }
+            document.body.classList.add('home-active');
+        }, 500); 
+    }
+}
+</script>
+
+</body>
+</html>
+
