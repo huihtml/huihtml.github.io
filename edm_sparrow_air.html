@@ -1,0 +1,131 @@
+<html>
+<head>
+    <title>Thank You Newsletter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lemon&family=Titillium+Web:wght@200&display=swap" rel="stylesheet">
+
+    <style>
+        #container {
+            width: 600px;
+            margin: 0 auto;
+            background: aliceblue;
+        }
+
+        /* Instruction 1 */
+        .highlight {
+            font-family: 'Lemon', serif; 
+            color: darkorange;  
+        }
+
+        /* Instruction 2 */
+        body {
+            text-align: center;
+            color: #222222;
+            font-family: sans-serif;
+        }
+
+        #hero {
+            background: url("images/sky.jpg") no-repeat center;
+            padding: 20px;
+            background-size: cover;
+            height: 400px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+        }
+        
+        #stats {
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+        
+        /* Instruction 5 */
+        #message {
+        background: rgba(180, 200, 200, .9);
+        border-radius: 10px;       
+        font-size: 0.8em;          
+        padding: 5px 10px;          
+        line-height: 1.5em;         
+        margin: 20px 0 20px auto;         
+        width: 80%;    
+        text-align: left;           
+        }
+
+        /* Instruction 6 */
+        .cell {
+        width: 120px;
+        box-sizing: border-box;
+        padding: 0 10px 10px 10px;
+        background: powderblue;
+        margin: 5px;
+        border-radius: 10px;
+        border: 2px ridge cadetblue;
+        }
+
+        header {
+            text-align: center;
+            background: aliceblue;
+            padding: 10px 0;
+        }
+        
+        /* Instruction 4 */
+        .white {
+            color: whitesmoke;
+        }
+
+        footer {
+            background: #36a7c2;
+            padding: 5px;
+        }
+
+        /* Instruction 8 */
+        strong {
+        font-size: 1.8em;
+        color: orange;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); 
+        }
+
+        .tiny {
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+
+<body>
+    <p class="tiny">Unable to view the email below? View it <a href="#">online here</a> instead</p>
+    
+    <div id="container">
+
+    <header>
+        <a href="https://www.sparrow.se/en/" target="_blank">
+            <img src="images/sparrowlogo.PNG" width="200" alt="Sparrow Logo"/>
+        </a>
+    </header>
+        
+        <div id="hero">
+            <h1 class="highlight">Here's your carbon offset receipt</h1>
+            <p class="white"> Reference no. SPRW888</p>
+            
+            <div id="message">
+                <p>Thank you for offsetting your share of carbon emissions and flying carbon neutral with the Sparrow Air Carbon Offset Programme.</p>
+                <p>Your contribution is now on its way to support a portfolio of accredited carbon offset projects across Asia.</p>
+            </div>
+        </div>
+
+        <div id="stats">
+            <div class="cell"><img src="images/passsenger.png"/><br><strong class="highlight">4</strong><br>passengers</div>
+            <div class="cell"><img src="images/gaugeicon.png"/><br><strong class="highlight">1800+</strong><br>miles</div>
+            <div class="cell"><img src="images/ton.png"/><br><strong class="highlight">2.2</strong><br>tons of CO2</div>
+            <div class="cell"><img src="images/leaf.png"/><br><strong class="highlight">16</strong><br>trees planted</div>
+        </div>
+
+        <footer>
+            <p class="tiny white">Copyright 2026</p>
+        </footer>
+    </div>
+</body>
+</html>
